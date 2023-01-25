@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd cogs106
-
 git add .
 git commit -m "Update"
 git push
