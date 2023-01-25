@@ -9,6 +9,6 @@ git push
 date > version
 
 git add .
-git commit -m "Added 'version' file'
+git commit -m "Added 'version' file"
 git push
 
