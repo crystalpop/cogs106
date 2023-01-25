@@ -4,7 +4,7 @@ git add .
 git commit -m "Update"
 git push
 
-date > version
+date >> version
 
 git add .
 git commit -m "Added 'version' file"
