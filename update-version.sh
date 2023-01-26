@@ -1,8 +1,6 @@
 #!/bin/bash
 
-git add .
-git commit -m "Update"
-git push
+git pull
 
 date >> version
 
