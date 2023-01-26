@@ -2,7 +2,7 @@
 
 git pull
 
-date >> version
+date > version
 
 git add .
 git commit -m "New version"
