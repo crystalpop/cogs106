@@ -30,6 +30,8 @@ class SignalDetection:
     def __add__(self, other):
        return SignalDetection(self.__hits + other.__hits, self.__misses + other.__misses, self.__falseAlarm + other.__falseAlarm, self.__correctRejections + other.__correctRejections)
 
+    def __mul__(self, scalar):
+       return SignalDetection(self.__hits * scalar, self.__misses * scalar, self.__falseAlarm * scalar, self.__correctRejections * scalar)
 
 
 class TestSignalDetection(unittest.TestCase):
