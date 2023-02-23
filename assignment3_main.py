@@ -10,21 +10,21 @@ class SignalDetection:
             if int(item) < 0:
                 raise ValueError("Number of trials cannot be negative.")
     
-        self.hits = hits
-        self.misses = misses
-        self.falseAlarm = falseAlarm
-        self.correctRejections = correctRejections
-        self.hit_rate = hits / (hits + misses)
-        self.false_alarm_rate = falseAlarm / (falseAlarm + correctRejections)
-        self.z_h = NormalDist().inv_cdf(self.hit_rate)
-        self.z_fa = NormalDist().inv_cdf(self.false_alarm_rate)
+        self.__hits = hits
+        self.__misses = misses
+        self.__falseAlarm = falseAlarm
+        self.__correctRejections = correctRejections
+        self.__hit_rate = self.__hits / (self.__hits + self.__misses)
+        self.__false_alarm_rate = self.__falseAlarm / (self.__falseAlarm + self.__correctRejections)
+        self.__z_h = NormalDist().inv_cdf(self.__hit_rate)
+        self.__z_fa = NormalDist().inv_cdf(self.__false_alarm_rate)
 
     def d_prime(self):
-        d = self.z_h - self.z_fa
+        d = self.__z_h - self.__z_fa
         return d
 
     def criterion(self):
-        c = (-0.5) * (self.z_h + self.z_fa)
+        c = (-0.5) * (self.__z_h + self.__z_fa)
         return c
 
 
@@ -62,14 +62,14 @@ class TestSignalDetection(unittest.TestCase):
 
     def test_corruption(self):
        sd = SignalDetection(1, 2, 3, 1)
-       sd.hits = 5
-       sd.misses = 5
-       sd.correctRejections = 5
-       sd.falseAlarm = 5
-       sd.hit_rate = 5
-       sd.false_alarm_rate = 5
-       sd.z_fa = 5
-       sd.z_h = 5
+       sd.__hits = 5
+       sd.__misses = 5
+       sd.__correctRejections = 5
+       sd.__falseAlarm = 5
+       sd.__hit_rate = 5
+       sd.__false_alarm_rate = 5
+       sd.__z_fa = 5
+       sd.__z_h = 5
        expected_c = SignalDetection(1, 2, 3, 1).criterion()
        obtained_c = sd.criterion()
        self.assertEqual(obtained_c, expected_c)
