@@ -27,6 +27,9 @@ class SignalDetection:
         c = (-0.5) * (self.__z_h + self.__z_fa)
         return c
 
+    def __add__(self, other):
+       return SignalDetection(self.__hits + other.__hits, self.__misses + other.__misses, self.__falseAlarm + other.__falseAlarm, self.__correctRejections + other.__correctRejections)
+
 
 
 class TestSignalDetection(unittest.TestCase):
