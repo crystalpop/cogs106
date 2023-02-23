@@ -92,7 +92,7 @@ class TestSignalDetection(unittest.TestCase):
        # Compare calculated and expected criterion
        self.assertEqual(obtained, expected)
 
-   def test_multiplication(self):
+    def test_multiplication(self):
        sd = SignalDetection(1, 2, 3, 1) * 4
        expected = SignalDetection(4, 8, 12, 4).criterion()
        obtained = sd.criterion()
