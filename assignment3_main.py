@@ -33,6 +33,12 @@ class SignalDetection:
     def __mul__(self, scalar):
        return SignalDetection(self.__hits * scalar, self.__misses * scalar, self.__falseAlarm * scalar, self.__correctRejections * scalar)
 
+    def plot_hit_false(self, obj):
+       plt.plot(obj.__hit_rate, obj.__false_alarm_rate, 'bo')
+       plt.xlabel("Hit rate")
+       plt.ylabel("False alarm rate")
+       plt.title("ROC curve")
+       plt.show()
 
 class TestSignalDetection(unittest.TestCase):
     def test_d_prime_zero(self):
