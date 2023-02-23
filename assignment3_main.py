@@ -60,6 +60,19 @@ class TestSignalDetection(unittest.TestCase):
         # Compare calculated and expected criterion
         self.assertAlmostEqual(obtained, expected, places=6)
 
+    def test_corruption(self):
+       sd = SignalDetection(1, 2, 3, 1)
+       sd.hits = 5
+       sd.misses = 5
+       sd.correctRejections = 5
+       sd.falseAlarm = 5
+       sd.hit_rate = 5
+       sd.false_alarm_rate = 5
+       sd.z_fa = 5
+       sd.z_h = 5
+       expected_c = SignalDetection(1, 2, 3, 1).criterion()
+       obtained_c = sd.criterion()
+       self.assertEqual(obtained_c, expected_c)
 
 
 
